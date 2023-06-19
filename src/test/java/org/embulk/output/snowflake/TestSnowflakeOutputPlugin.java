@@ -207,6 +207,7 @@ public class TestSnowflakeOutputPlugin {
     assertEquals(Optional.empty(), task.getDriverPath());
     assertEquals("", task.getUser());
     assertEquals("", task.getPassword());
+    assertEquals(Optional.empty(), task.getRole());
     assertEquals("public", task.getSchema());
     assertEquals(false, task.getDeleteStage());
   }

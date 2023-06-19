@@ -38,6 +38,10 @@ public class SnowflakeOutputPlugin extends AbstractJdbcOutputPlugin {
     @ConfigDefault("\"\"")
     public String getPassword();
 
+    @Config("role")
+    @ConfigDefault("null")
+    public Optional<String> getRole();
+
     @Config("database")
     public String getDatabase();
 
@@ -96,6 +100,9 @@ public class SnowflakeOutputPlugin extends AbstractJdbcOutputPlugin {
     props.setProperty("warehouse", t.getWarehouse());
     props.setProperty("db", t.getDatabase());
     props.setProperty("schema", t.getSchema());
+    if (t.getRole().isPresent()) {
+      props.setProperty("role", t.getRole().get());
+    }
 
     // When CLIENT_METADATA_REQUEST_USE_CONNECTION_CTX is false (default),
     // getMetaData().getColumns() returns columns of the tables which table name is
