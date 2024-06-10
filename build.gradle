@@ -7,6 +7,9 @@ plugins {
     id "com.adarshr.test-logger" version "3.0.0"
 }
 repositories {
+//    flatDir {
+//        dirs 'libs'
+//    }
     mavenCentral()
 }
 
@@ -50,8 +53,18 @@ dependencies {
     testImplementation "org.embulk:embulk-input-file:0.10.31"
     testImplementation "org.embulk:embulk-parser-csv:0.10.31"
 
-    compile "org.embulk:embulk-output-jdbc:0.10.2"
+//    compile "org.embulk:embulk-output-jdbc:0.10.2"
+//    implementation(fileTree(dir: 'libs', include: ['embulk-output-jdbc-0.10.2.jar']))
+//    implementation(files('libs/embulk-output-jdbc-0.10.2.jar'))
+//    implementation(fileTree("libs"))
+//    implementation(fileTree(dir: 'libs', include: ['*.jar']))
+//    runtimeOnly(files('libs/embulk-output-jdbc-0.10.2.jar'))
     compile "net.snowflake:snowflake-jdbc:3.13.26"
+
+    // embulk-output-jdbc-0.10.2
+    compile "org.embulk:embulk-util-json:0.1.1"
+    compile "org.embulk:embulk-util-timestamp:0.2.1"
+    compile "org.embulk:embulk-util-retryhelper:0.8.2"
 }
 embulkPlugin {
     mainClass = "org.embulk.output.SnowflakeOutputPlugin"
